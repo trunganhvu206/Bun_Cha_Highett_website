@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Menu · Bún Chả · Vietnamese Grill House · Highett</title>
+  <meta name="description" content="The full menu of Bún Chả, Highett – bún chả, rice paper rolls, pho, mains, rice dishes and weekend bánh mì. Dine in or take away." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <a href="index.html" class="brand" aria-label="Bún Chả – home"><img class="logo" src="images/logo.svg" alt="" width="44" height="44" /></a>
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-icon" aria-hidden="true"></span>Menu
+    </button>
+    <nav id="site-nav" aria-label="Main">
+      <a href="index.html#about">About</a>
+      <a href="menu.html" aria-current="page">Food menu</a>
+      <a href="index.html#reviews">Reviews</a>
+      <a href="index.html#book">Bookings</a>
+      <a href="index.html#visit">Hours &amp; Location</a>
+      <a data-phone-link href="#">Call us</a>
+    </nav>
+    <a class="btn btn-sm nav-book" href="index.html#book">Book a table</a>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="page-hero">
+      <div class="page-hero-inner">
+        <p class="eyebrow" lang="vi">Thực đơn</p>
+        <h1>Our Menu</h1>
+        <p class="lede">Dine in or take away. Charcoal grilled, fresh and full of flavour.</p>
+        <div class="hero-cta">
+          <a class="btn" href="index.html#book">Book a table</a>
+          <a class="btn btn-ghost" target="_blank" rel="noopener" data-ubereats href="#">Order on Uber Eats</a>
+          <a class="btn btn-ghost" data-phone-link href="#">Call to order <span data-phone></span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Jump to a type of food -->
+    <nav class="cat-nav" aria-label="Menu sections">
+      <ul id="cat-nav"></ul>
+    </nav>
+
+    <section class="section full-menu" aria-label="Full menu">
+      <div class="menu-tools">
+        <div class="menu-filters" role="group" aria-labelledby="filter-label">
+          <span id="filter-label" class="filter-label">Show only:</span>
+          <button type="button" class="chip" data-filter="gf" aria-pressed="false">Gluten free</button>
+          <button type="button" class="chip" data-filter="vegan" aria-pressed="false">Vegan</button>
+          <button type="button" class="chip" data-filter="nutfree" aria-pressed="false">No nuts</button>
+        </div>
+      </div>
+      <p id="filter-note" class="filter-note muted" hidden></p>
+      <p id="menu-count" class="sr-only" aria-live="polite"></p>
+
+      <div class="menu-info">
+        <p id="price-info"></p>
+        <p id="takeaway-info"></p>
+      </div>
+
+      <div id="menu-body" class="menu-cats"></div>
+      <p id="menu-empty" class="muted" hidden>No dishes match your choices. Try removing a filter, or ask our staff – many dishes can be adjusted.</p>
+
+      <div class="legend">
+        <p>
+          <span><abbr class="diet">GF</abbr> Gluten free</span>
+          <span><abbr class="diet">GFO</abbr> Gluten free option</span>
+          <span><abbr class="diet">V</abbr> Vegan</span>
+          <span><abbr class="diet">VGO</abbr> Vegan option</span>
+          <span><abbr class="diet">N</abbr> Contains nuts</span>
+        </p>
+        <p class="muted">Please advise staff of allergies or intolerances upon ordering. We cannot guarantee that cross-contamination has not occurred.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <img class="footer-logo" src="images/logo.svg" alt="Bún Chả" width="72" height="72" />
+    <p><span data-address></span></p>
+    <p><a data-phone-link href="#"><span data-phone></span></a> · <a data-email-link href="#"><span data-email></span></a></p>
+    <p><a target="_blank" rel="noopener" data-instagram href="#"></a> · <a target="_blank" rel="noopener" data-facebook href="#"></a></p>
+    <p class="muted">© <span data-year></span> Bún Chả Asian Fusion · Highett</p>
+  </footer>
+
+  <!-- AI ASSISTANT -->
+  <div class="chat" id="chat">
+    <button type="button" class="chat-launcher" id="chat-launcher" aria-expanded="false" aria-controls="chat-panel">
+      <span class="chat-launcher-icon" aria-hidden="true"></span>
+      <span>Ask us</span>
+    </button>
+    <div class="chat-panel" id="chat-panel" role="dialog" aria-labelledby="chat-title" hidden>
+      <div class="chat-head">
+        <img src="images/logo.svg" alt="" width="32" height="32" />
+        <div>
+          <p class="chat-title" id="chat-title">Bún Chả assistant</p>
+          <p class="chat-sub">AI assistant · can make mistakes</p>
+        </div>
+        <button type="button" class="chat-close" id="chat-close" aria-label="Close chat">×</button>
+      </div>
+      <div class="chat-log" id="chat-log" role="log" aria-live="polite">
+        <div class="chat-msg chat-bot">Xin chào! Hi! Ask me anything about our dishes, ingredients or dietary options.</div>
+      </div>
+      <div class="chat-suggest" id="chat-suggest">
+        <button type="button">What's gluten free?</button>
+        <button type="button">What do you recommend?</button>
+        <button type="button">Is bánh mì on today?</button>
+      </div>
+      <form class="chat-form" id="chat-form">
+        <label for="chat-input" class="sr-only">Your question</label>
+        <input id="chat-input" name="q" autocomplete="off" maxlength="1000" placeholder="Type your question…" required />
+        <button type="submit" class="chat-send" aria-label="Send">➤</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="common.js"></script>
+  <script src="menu.js"></script>
+  <script src="chat-widget.js"></script>
+</body>
+</html>

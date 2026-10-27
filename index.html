@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bún Chả · Vietnamese Grill House · Highett</title>
+  <meta name="description" content="Bún Chả – Vietnamese grill house and Asian fusion at 332 Highett Rd, Highett. Charcoal grilled Hanoi bún chả, dine in or take away." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <a href="#top" class="brand" aria-label="Bún Chả – back to top"><img class="logo" src="images/logo.svg" alt="" width="44" height="44" /></a>
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-icon" aria-hidden="true"></span>Menu
+    </button>
+    <nav id="site-nav" aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#menu">Food menu</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#book">Bookings</a>
+      <a href="#visit">Hours &amp; Location</a>
+      <a data-phone-link href="#">Call us</a>
+    </nav>
+    <a class="btn btn-sm nav-book" href="#book">Book a table</a>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <span id="top"></span>
+
+    <!-- HERO with photo slideshow -->
+    <section class="hero" aria-roledescription="carousel" aria-label="Photos of Bún Chả">
+      <div class="hero-slides">
+        <img class="hero-slide is-active" src="images/storefront.jpg" alt="The Bún Chả shopfront on Highett Rd with its Vietnamese Grill House sign" />
+        <img class="hero-slide" src="images/gallery-feast.jpg" alt="A long table set with many Bún Chả dishes" loading="lazy" />
+        <img class="hero-slide" src="images/interior.jpg" alt="Window bar seating inside the restaurant" loading="lazy" />
+      </div>
+      <div class="hero-inner">
+        <h1 class="hero-title"><span lang="vi">Bún Chả</span> <span class="hero-sub">Vietnamese Grill House</span></h1>
+        <p class="lede" id="hero-tagline">Bringing the soul of Northern Vietnam to Highett – charcoal grilled, fresh and full of flavour.</p>
+        <div class="hero-cta">
+          <a class="btn" href="#book">Book a table</a>
+          <a class="btn btn-ghost" href="#menu">See the menu</a>
+          <a class="btn btn-ghost" target="_blank" rel="noopener" data-ubereats href="#">Order on Uber Eats</a>
+        </div>
+        <p class="hero-status" id="open-status"></p>
+      </div>
+      <div class="hero-controls">
+        <button type="button" class="hero-pause" id="hero-pause" aria-label="Pause slideshow">
+          <span class="hero-pause-icon" aria-hidden="true"></span>
+        </button>
+        <div class="hero-dots" id="hero-dots"></div>
+      </div>
+    </section>
+
+    <!-- ABOUT + SIGNATURE DISHES -->
+    <section id="about" class="section about">
+      <div class="about-intro">
+        <div class="about-text">
+          <p class="eyebrow">About us · What is bún chả?</p>
+          <h2>The taste of Northern Vietnam</h2>
+          <p class="pronounce"><strong lang="vi">Bún chả</strong> – pronounced <span class="ipa" lang="vi-Latn-fonipa">[ɓǔn ca᷉ː]</span> “boon chah”</p>
+          <p>Among those well-known street foods like Banh mi, Pho, or Goi cuon, Bun Cha is the representative for the North part.</p>
+          <p>“Bun” means the rice vermicelli, while “cha” means the grilled meat, or any kind of meat which is cooked by charcoal grill. A combination of the smoky flavour, the fragrant sweet and sour light fish sauce, and the freshness of vermicelli and herbs, altogether brings an unforgettable experience, addictive but healthy.</p>
+          <p>Inspired by the North food tradition, we would like to introduce to you our delicious and unique dishes, which might make you feel like you are sitting on some small streets of Vietnam. Our menu will deliver to you our signature in charcoal grilled dishes, however, there are a lot of interesting things we would like you to discover. Not only the North part, we also have some specialities from the ancient Hue, Hoi An, or Saigon street food.</p>
+          <p>Thank you for coming, we hope that you can enjoy your meals and have good experiences at Bun Cha Restaurant.</p>
+        </div>
+        <figure class="about-photo">
+          <img class="dish-photo" src="images/bun-cha-hanoi.jpg" alt="Bún chả Hanoi: grilled pork and pickled carrot in dipping sauce, with rice vermicelli and fresh herbs" loading="lazy" width="500" height="333" />
+          <figcaption><span lang="vi">Bún Chả Hà Nội</span> – our charcoal grilled signature</figcaption>
+        </figure>
+      </div>
+
+      <div class="signature">
+        <h3 class="signature-title">Bún Chả Signature</h3>
+        <p class="signature-hint muted">Tap a dish to read its story.</p>
+
+        <div class="signature-grid">
+          <button type="button" class="gallery-item sig-tile sig-tall" data-dish="goicuon" aria-haspopup="dialog">
+            <img src="images/gallery-rice-paper-rolls.jpg" alt="" loading="lazy" />
+            <span class="sig-caption"><span class="sig-name" lang="vi">Gỏi Cuốn</span><span class="sig-more">Fresh rice paper rolls · Read more</span></span>
+          </button>
+          <button type="button" class="gallery-item sig-tile" data-dish="chaca" aria-haspopup="dialog">
+            <img src="images/gallery-cha-ca.jpg" alt="" loading="lazy" />
+            <span class="sig-caption"><span class="sig-name" lang="vi">Chả Cá Lã Vọng</span><span class="sig-more">La Vong grilled fish · Read more</span></span>
+          </button>
+          <button type="button" class="gallery-item sig-tile" data-dish="skewers" aria-haspopup="dialog">
+            <img src="images/gallery-skewers.jpg" alt="" loading="lazy" />
+            <span class="sig-caption"><span class="sig-name">Grilled Chicken Skewers</span><span class="sig-more">Read more</span></span>
+          </button>
+          <button type="button" class="gallery-item sig-tile sig-wide" data-dish="vermicelli" aria-haspopup="dialog">
+            <img src="images/gallery-vermicelli-beef.jpg" alt="" loading="lazy" />
+            <span class="sig-caption"><span class="sig-name">Stir Fried Beef Vermicelli Bowl</span><span class="sig-more">Read more</span></span>
+          </button>
+        </div>
+
+        <dialog class="dish-dialog" id="dish-dialog" aria-labelledby="dish-title">
+          <button type="button" class="dish-close" id="dish-close" aria-label="Close">×</button>
+          <img id="dish-img" src="" alt="" />
+          <div class="dish-body">
+            <h4 id="dish-title"></h4>
+            <p class="dish-sub" id="dish-sub"></p>
+            <div id="dish-text"></div>
+          </div>
+        </dialog>
+
+        <template id="dish-goicuon" data-title="Gỏi Cuốn" data-sub="Fresh rice paper rolls" data-img="images/gallery-rice-paper-rolls.jpg" data-alt="Three prawn rice paper rolls on a blue patterned plate with dipping sauce">
+            <p>Goi Cuon is one of the most popular appetizers in Vietnamese food culture. The traditional food is ranked at number 50 on the list of 50 most delicious foods in the world by CNN Go in 2011. This food consists of shrimp, pork, vegetables, herbs, rice vermicelli (Bún). All of them are wrapped in rice paper (Banh Trang).</p>
+            <p>It is often served with a kind of special dipping sauce – fish sauce (nuoc nam) – and garlic, limes, chili, crushed roasted peanuts. The combination of herbs, pork, shrimp, and the salty, hot, and sour dipping sauce makes the Vietnamese fresh spring roll wonderfully unique.</p>
+            <p>At Bun Cha Highett, Goi Cuon are made from fresh ingredients and retain the traditional flavor. Let’s come Bun Cha Highett to enjoy the rustic culture of South Vietnam through Goi Cuon.</p>
+        </template>
+
+        <template id="dish-chaca" data-title="Chả Cá Lã Vọng" data-sub="La Vong grilled fish" data-img="images/gallery-cha-ca.jpg" data-alt="Turmeric fish with dill and green onion on a sizzling plate, with vermicelli and dipping sauce">
+            <p>Chả Cá Lã Vọng is a must-not-miss in guidebooks for whoever visiting Hanoi not only for its mouthful flavor but also its representation of Hanoi culture.</p>
+            <p>The dish and all of its accompaniment are complex in flavor and texture yet they come together harmoniously. La Vong grill fish is traditionally made with hemibagrus (<span lang="vi">cá lăng</span>), which is cut into pieces and marinated in a turmeric-based sauce, which often includes shrimp paste or fish sauce, ginger, and chili peppers. It is eaten with vermicelli rice noodles (bún) and peanuts.</p>
+            <p>The Hanoians often eat this dish while sipping some alcohol in the cold weather. Eating La Vong grill fish is close to a ritual; it is a nice place for family and friends to get together and enjoy delicious dish after days of hard work.</p>
+        </template>
+
+        <template id="dish-skewers" data-title="Grilled Chicken Skewers" data-sub="To share · 2 pieces · $14" data-img="images/gallery-skewers.jpg" data-alt="Grilled chicken skewers in satay sauce topped with arugula slaw">
+            <p>Tender chicken, marinated and grilled over charcoal, then served with our satay sauce and a fresh arugula slaw.</p>
+            <p class="muted">Contains nuts.</p>
+        </template>
+
+        <template id="dish-vermicelli" data-title="Stir Fried Beef Vermicelli Bowl" data-sub="Vermicelli bowl · $23" data-img="images/gallery-vermicelli-beef.jpg" data-alt="Vermicelli bowl with stir fried beef, cucumber, pickled carrot, lettuce and herbs, with fish sauce on the side">
+            <p>Wok stir fried beef on rice vermicelli with fresh salad, crispy shallot and peanuts, served with our fish sauce. Add a crispy spring roll for $2.</p>
+            <p class="muted">Gluten free · contains nuts.</p>
+        </template>
+      </div>
+    </section>
+
+    <!-- MENU OVERVIEW (the full menu is on menu.html) -->
+    <section id="menu" class="section menu">
+      <div class="mo-intro">
+        <div>
+          <p class="eyebrow" lang="vi">Thực đơn</p>
+          <h2>Our menu</h2>
+          <p>Charcoal grilled bún chả, fresh rice paper rolls, pho, wok-fried mains and weekend bánh mì – for dine in or take away.</p>
+        </div>
+        <div class="mo-actions">
+          <a class="btn" href="menu.html">See the full menu</a>
+          <a class="btn btn-outline" target="_blank" rel="noopener" data-ubereats href="#">Order take away</a>
+        </div>
+      </div>
+      <ul class="mo-grid" id="menu-overview"></ul>
+      <p class="muted mo-note">Gluten free, vegan and nut-free choices are marked on the full menu. Please tell our staff about any allergies.</p>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews" class="section reviews">
+      <div class="reviews-head">
+        <div>
+          <p class="eyebrow">What our guests say</p>
+          <h2>Google reviews</h2>
+        </div>
+        <div id="rating-summary" class="rating-summary"></div>
+      </div>
+      <div class="rv-carousel" aria-roledescription="carousel" aria-label="Google reviews">
+        <ul class="rv-track" id="review-list" tabindex="0" aria-label="Google reviews – scroll sideways for more"></ul>
+        <button type="button" class="rv-nav rv-prev" id="rv-prev" aria-label="Previous review">‹</button>
+        <button type="button" class="rv-nav rv-next" id="rv-next" aria-label="Next review">›</button>
+      </div>
+      <div class="review-actions">
+        <a class="btn btn-sm" target="_blank" rel="noopener" data-google-reviews href="#">See all reviews on Google</a>
+        <a class="btn btn-sm btn-outline" target="_blank" rel="noopener" id="write-review" href="#">Leave us a review</a>
+      </div>
+    </section>
+
+    <!-- BOOK -->
+    <section id="book" class="section book">
+      <div class="book-intro">
+        <p class="eyebrow" lang="vi">Đặt bàn</p>
+        <h2>Book a table</h2>
+        <p>Send us a booking request – pick a day and a time, and our staff will check availability and confirm with you by email or text.</p>
+        <p class="muted">Groups of more than <span data-max-party></span>, or need to change or cancel? Call <a class="link" data-phone-link href="#"><span data-phone></span></a> or email <a class="link" data-email-link href="#"><span data-email></span></a>.</p>
+      </div>
+
+      <div class="book-panel">
+        <form id="booking-form" class="book-form" novalidate>
+          <div class="field-row">
+            <label class="field">Date
+              <input type="date" name="date" required />
+            </label>
+            <div class="field">
+              <label for="guests">Guests</label>
+              <div class="stepper">
+                <button type="button" class="stepper-btn" data-step="-1" aria-label="One fewer guest">−</button>
+                <input type="number" id="guests" name="guests" inputmode="numeric" min="1" value="2" required />
+                <button type="button" class="stepper-btn" data-step="1" aria-label="One more guest">+</button>
+              </div>
+            </div>
+          </div>
+
+          <label class="field">Time
+            <select name="time" id="time-select" required disabled>
+              <option value="">Pick a date first</option>
+            </select>
+          </label>
+          <p id="slot-status" class="slot-status muted" aria-live="polite"></p>
+
+          <label class="field">Name
+            <input name="name" autocomplete="name" maxlength="80" required />
+          </label>
+          <div class="field-row">
+            <label class="field">Phone
+              <input type="tel" name="phone" autocomplete="tel" maxlength="20" required />
+            </label>
+            <label class="field">Email <span class="optional">(for your confirmation)</span>
+              <input type="email" name="email" autocomplete="email" maxlength="120" />
+            </label>
+          </div>
+          <label class="field">Notes <span class="optional">(optional)</span>
+            <textarea name="notes" rows="3" maxlength="500" placeholder="Allergies, high chair, special occasion…"></textarea>
+          </label>
+          <!-- left empty by people; bots fill it in -->
+          <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+          <p id="booking-error" class="form-error" role="alert" hidden></p>
+          <button class="btn" type="submit">Send booking request</button>
+        </form>
+
+        <div id="booking-success" class="book-success" role="status" hidden></div>
+        <div id="booking-offline" class="book-success" hidden>
+          <h3>Online booking is unavailable right now</h3>
+          <p>Please call us on <a class="link" data-phone-link href="#"><span data-phone></span></a> to book a table.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISIT -->
+    <section id="visit" class="section visit">
+      <div>
+        <p class="eyebrow">Come say hi</p>
+        <h2>Hours &amp; Location</h2>
+        <table class="hours">
+          <caption class="sr-only">Opening hours</caption>
+          <tbody id="hours"></tbody>
+        </table>
+        <p class="closed-note" id="closed-note" hidden></p>
+      </div>
+      <div class="contact">
+        <div class="contact-card">
+          <h3>Address</h3>
+          <p data-address></p>
+          <a class="link" target="_blank" rel="noopener" data-maps-link href="#">Get directions →</a>
+          <h3>Contact</h3>
+          <p>Phone: <a class="link" data-phone-link href="#"><span data-phone></span></a></p>
+          <p>Email: <a class="link" data-email-link href="#"><span data-email></span></a></p>
+          <p class="muted">Call ahead for take away orders, or <a class="link" target="_blank" rel="noopener" data-ubereats href="#">order on Uber Eats</a>.</p>
+          <h3>Follow us</h3>
+          <p>Instagram: <a class="link" target="_blank" rel="noopener" data-instagram href="#"></a></p>
+          <p>Facebook: <a class="link" target="_blank" rel="noopener" data-facebook href="#"></a></p>
+          <p>Google: <a class="link" target="_blank" rel="noopener" data-google-reviews href="#">read our reviews</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <img class="footer-logo" src="images/logo.svg" alt="Bún Chả" width="72" height="72" />
+    <p><span data-address></span></p>
+    <p><a data-phone-link href="#"><span data-phone></span></a> · <a data-email-link href="#"><span data-email></span></a></p>
+    <p><a target="_blank" rel="noopener" data-instagram href="#"></a> · <a target="_blank" rel="noopener" data-facebook href="#"></a></p>
+    <p class="muted">© <span data-year></span> Bún Chả Asian Fusion · Highett</p>
+  </footer>
+
+  <!-- GOOGLE REVIEW POP-UP (fills in from the reviews, see script.js) -->
+  <aside class="review-pop" id="review-pop" aria-label="Google review" hidden>
+    <a class="review-pop-body" href="#reviews" id="review-pop-body"></a>
+    <button type="button" class="review-pop-close" id="review-pop-close" aria-label="Hide reviews">×</button>
+  </aside>
+
+  <!-- AI ASSISTANT -->
+  <div class="chat" id="chat">
+    <button type="button" class="chat-launcher" id="chat-launcher" aria-expanded="false" aria-controls="chat-panel">
+      <span class="chat-launcher-icon" aria-hidden="true"></span>
+      <span>Ask us</span>
+    </button>
+    <div class="chat-panel" id="chat-panel" role="dialog" aria-labelledby="chat-title" hidden>
+      <div class="chat-head">
+        <img src="images/logo.svg" alt="" width="32" height="32" />
+        <div>
+          <p class="chat-title" id="chat-title">Bún Chả assistant</p>
+          <p class="chat-sub">AI assistant · can make mistakes</p>
+        </div>
+        <button type="button" class="chat-close" id="chat-close" aria-label="Close chat">×</button>
+      </div>
+      <div class="chat-log" id="chat-log" role="log" aria-live="polite">
+        <div class="chat-msg chat-bot">Xin chào! Hi! Ask me anything about our menu, opening hours, bookings or dietary options.</div>
+      </div>
+      <div class="chat-suggest" id="chat-suggest">
+        <button type="button">Are you open today?</button>
+        <button type="button">What are your vegan dishes?</button>
+        <button type="button">How do I book a table?</button>
+      </div>
+      <form class="chat-form" id="chat-form">
+        <label for="chat-input" class="sr-only">Your question</label>
+        <input id="chat-input" name="q" autocomplete="off" maxlength="1000" placeholder="Type your question…" required />
+        <button type="submit" class="chat-send" aria-label="Send">➤</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="common.js"></script>
+  <script src="script.js"></script>
+  <script src="booking.js"></script>
+  <script src="chat-widget.js"></script>
+</body>
+</html>
