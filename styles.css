@@ -1,0 +1,176 @@
+:root {
+  --cream: #f7f1e6;
+  --paper: #fffaf1;
+  --ink: #241a14;
+  --muted: #74675c;
+  --char: #1d1511;
+  --ember: #c2410c;
+  --ember-dark: #9a330a;
+  --herb: #3f6b3a;
+  --line: #e6dccb;
+  --radius: 14px;
+  --max: 1120px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font: 400 17px/1.65 "Be Vietnam Pro", system-ui, sans-serif;
+}
+h1, h2, h3, .brand { font-family: "Fraunces", Georgia, serif; font-weight: 700; line-height: 1.1; margin: 0; }
+a { color: inherit; }
+img, iframe { max-width: 100%; }
+
+/* ---------- Nav ---------- */
+.nav {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 12px max(16px, calc((100vw - var(--max)) / 2));
+  background: rgba(29, 21, 17, 0.94);
+  backdrop-filter: blur(8px);
+  color: var(--cream);
+}
+.nav .brand { font-size: 1.5rem; text-decoration: none; color: #fbbf77; }
+.nav nav { display: flex; gap: 28px; }
+.nav nav a { text-decoration: none; font-size: 0.95rem; opacity: 0.85; }
+.nav nav a:hover { opacity: 1; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 13px 24px;
+  background: var(--ember); color: #fff;
+  border-radius: 999px; text-decoration: none; font-weight: 600;
+  transition: background 0.15s, transform 0.15s;
+}
+.btn:hover { background: var(--ember-dark); transform: translateY(-1px); }
+.btn-sm { padding: 8px 18px; font-size: 0.9rem; }
+.btn-ghost { background: transparent; border: 1.5px solid rgba(255, 255, 255, 0.5); }
+.btn-ghost:hover { background: rgba(255, 255, 255, 0.1); }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  min-height: 82vh;
+  display: flex; align-items: center;
+  padding: 80px 16px;
+  color: var(--cream);
+  background:
+    radial-gradient(ellipse at 80% 70%, rgba(194, 65, 12, 0.55), transparent 55%),
+    radial-gradient(ellipse at 15% 20%, rgba(63, 107, 58, 0.35), transparent 50%),
+    var(--char);
+  overflow: hidden;
+}
+.hero::after { /* subtle smoke texture */
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: repeating-radial-gradient(circle at 70% 110%, transparent 0 22px, rgba(255, 255, 255, 0.025) 22px 23px);
+}
+.hero-inner { position: relative; z-index: 1; width: 100%; max-width: var(--max); margin: 0 auto; }
+.hero h1 { font-size: clamp(2.8rem, 8vw, 5.6rem); margin: 12px 0 20px; }
+.lede { max-width: 34rem; font-size: 1.15rem; opacity: 0.9; margin: 0 0 32px; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-status { margin-top: 28px; font-size: 0.95rem; opacity: 0.85; }
+.dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: #a8a29e; margin-right: 8px; vertical-align: 1px; }
+.dot.open { background: #4ade80; box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.2); }
+
+.eyebrow {
+  text-transform: uppercase; letter-spacing: 0.14em;
+  font-size: 0.78rem; font-weight: 600; color: var(--ember); margin: 0 0 10px;
+}
+.hero .eyebrow { color: #fbbf77; }
+
+/* ---------- Sections ---------- */
+.section { max-width: var(--max); margin: 0 auto; padding: 96px 16px; }
+.section h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 28px; }
+.muted { color: var(--muted); font-size: 0.92rem; }
+
+/* About */
+.about { display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: start; }
+.about-text p { margin: 0 0 18px; }
+.how-to { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.how-to li {
+  display: flex; gap: 18px; align-items: flex-start;
+  background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 20px 22px;
+}
+.how-to span {
+  flex: none; width: 38px; height: 38px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--herb); color: #fff; font-weight: 600;
+}
+.how-to h3 { font-size: 1.2rem; margin-bottom: 4px; }
+.how-to p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+/* Menu */
+.menu { border-top: 1px solid var(--line); }
+.tabs {
+  display: inline-flex; gap: 4px; padding: 5px;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 999px;
+  margin-bottom: 40px;
+}
+.tabs button {
+  border: 0; background: transparent; cursor: pointer;
+  font: 600 1rem "Be Vietnam Pro", sans-serif; color: var(--muted);
+  padding: 10px 24px; border-radius: 999px;
+}
+.tabs button[aria-selected="true"] { background: var(--char); color: var(--cream); }
+.menu-body { display: grid; grid-template-columns: 1fr 1fr; gap: 48px 64px; }
+.menu-section h3 { font-size: 1.6rem; color: var(--ember-dark); padding-bottom: 10px; border-bottom: 2px solid var(--ink); margin-bottom: 8px; }
+.menu-note { color: var(--muted); font-size: 0.92rem; font-style: italic; margin: 10px 0 4px; }
+.menu-section ul { list-style: none; margin: 0; padding: 0; }
+.menu-item { padding: 16px 0; border-bottom: 1px dashed var(--line); }
+.menu-item-head { display: flex; align-items: baseline; gap: 8px; }
+.menu-name { font-weight: 600; }
+.menu-dots { flex: 1; border-bottom: 1.5px dotted #c9bba5; transform: translateY(-4px); }
+.menu-price { font-weight: 600; font-variant-numeric: tabular-nums; }
+.menu-vi { margin: 2px 0 0; font-style: italic; color: var(--herb); font-size: 0.92rem; }
+.menu-desc { margin: 4px 0 0; color: var(--muted); font-size: 0.92rem; }
+.tag {
+  display: inline-block; font-style: normal; font-size: 0.72rem; font-weight: 600;
+  padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px;
+}
+.tag-signature { background: #fde3cf; color: var(--ember-dark); }
+.tag-v { background: #dcebd6; color: var(--herb); }
+.tag-spicy { background: #fbd5d5; color: #a11d1d; }
+.legend { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.legend .tag { margin-left: 0; }
+
+/* Visit */
+.visit { display: grid; grid-template-columns: 1fr 1.3fr; gap: 64px; border-top: 1px solid var(--line); }
+.hours { width: 100%; border-collapse: collapse; }
+.hours th, .hours td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.hours th { font-weight: 500; }
+.hours td { text-align: right; font-variant-numeric: tabular-nums; }
+.hours tr.today { background: var(--paper); }
+.hours tr.today th { font-weight: 700; color: var(--ember-dark); }
+.hours tr.today th::after { content: " · today"; font-weight: 400; font-size: 0.8rem; color: var(--muted); }
+.contact { display: grid; gap: 20px; }
+.contact-card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px 28px; }
+.contact-card h3 { font-size: 1.15rem; margin: 0 0 4px; }
+.contact-card h3:not(:first-child) { margin-top: 20px; }
+.contact-card p { margin: 0 0 4px; }
+.link { color: var(--ember-dark); font-weight: 600; text-decoration: none; }
+.link:hover { text-decoration: underline; }
+.map { width: 100%; height: 300px; border: 0; border-radius: var(--radius); }
+
+/* Footer */
+.footer { background: var(--char); color: var(--cream); text-align: center; padding: 48px 16px; }
+.footer .brand { font-size: 1.8rem; color: #fbbf77; margin-bottom: 8px; }
+.footer p { margin: 4px 0; }
+.footer a { text-decoration: none; }
+.footer .muted { color: #a8a29e; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .about, .visit, .menu-body { grid-template-columns: 1fr; gap: 40px; }
+  .section { padding: 72px 16px; }
+}
+@media (max-width: 600px) {
+  .nav nav { display: none; }
+  .hero { min-height: auto; padding: 72px 16px; }
+  .tabs { display: flex; }
+  .tabs button { flex: 1; padding: 10px 12px; }
+}

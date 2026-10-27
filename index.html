@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bún Chả Highett · Hanoi Grilled Pork Noodles</title>
+  <meta name="description" content="Bún Chả – authentic Hanoi-style grilled pork and noodles at 332 Highett Rd, Highett. Dine in or take away." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <a href="#top" class="brand">Bún Chả</a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#visit">Hours &amp; Location</a>
+    </nav>
+    <a class="btn btn-sm" data-phone-link href="#">Call</a>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">Hanoi street food · Highett</p>
+        <h1>Smoke, broth<br />&amp; fresh herbs.</h1>
+        <p class="lede">Chargrilled pork, silky rice noodles and a bowl of sweet-sour dipping broth – the way it's eaten on the footpaths of Hà Nội.</p>
+        <div class="hero-cta">
+          <a class="btn" href="#menu">See the menu</a>
+          <a class="btn btn-ghost" data-phone-link href="#">Call <span data-phone></span></a>
+        </div>
+        <p class="hero-status" id="open-status"></p>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section about">
+      <div class="about-text">
+        <p class="eyebrow">What is bún chả?</p>
+        <h2>Hanoi's favourite lunch</h2>
+        <p><strong>Bún chả</strong> (pronounced “boon chah”) is a grilled-pork noodle dish from Hà Nội, the capital of Vietnam. <em>Bún</em> means rice vermicelli and <em>chả</em> means grilled meat.</p>
+        <p>Pork patties and slices of marinated pork belly are cooked over charcoal until smoky and caramelised, then dropped into a bowl of <em>nước chấm</em> – a warm, light broth of fish sauce, vinegar, sugar, garlic and chilli, with slivers of pickled green papaya and carrot.</p>
+        <p>It's served alongside a plate of cool rice noodles and a basket of fresh herbs – lettuce, perilla, mint and Vietnamese balm. Dip, wrap and slurp as you like. Add a few crispy <em>nem rán</em> spring rolls and you've got a Hanoi feast.</p>
+      </div>
+      <ol class="how-to">
+        <li><span>1</span><div><h3>Grill</h3><p>Pork patties &amp; belly, marinated and charred over coals.</p></div></li>
+        <li><span>2</span><div><h3>Dip</h3><p>Pick up noodles and dunk them into the warm broth with the pork.</p></div></li>
+        <li><span>3</span><div><h3>Herb</h3><p>Tear in fresh herbs, add garlic and chilli to taste.</p></div></li>
+        <li><span>4</span><div><h3>Repeat</h3><p>Keep going until the bowl is empty. Spring rolls encouraged.</p></div></li>
+      </ol>
+    </section>
+
+    <!-- MENU -->
+    <section id="menu" class="section menu">
+      <p class="eyebrow">Thực đơn</p>
+      <h2>Menu</h2>
+      <div class="tabs" role="tablist" aria-label="Menu type">
+        <button role="tab" aria-selected="true" data-menu="dinein">Dine In</button>
+        <button role="tab" aria-selected="false" data-menu="takeaway">Take Away</button>
+      </div>
+      <div id="menu-body" class="menu-body" role="tabpanel"></div>
+      <p class="legend">
+        <span class="tag tag-signature">House favourite</span>
+        <span class="tag tag-v">Vegetarian</span>
+        <span class="tag tag-spicy">Spicy</span>
+        <span class="muted">Please let our staff know about any allergies.</span>
+      </p>
+    </section>
+
+    <!-- VISIT -->
+    <section id="visit" class="section visit">
+      <div>
+        <p class="eyebrow">Come say hi</p>
+        <h2>Hours &amp; Location</h2>
+        <table class="hours" id="hours"></table>
+      </div>
+      <div class="contact">
+        <div class="contact-card">
+          <h3>Address</h3>
+          <p data-address></p>
+          <a class="link" target="_blank" rel="noopener" data-maps-link href="#">Get directions →</a>
+          <h3>Phone</h3>
+          <p><a class="link" data-phone-link href="#"><span data-phone></span></a></p>
+          <p class="muted">Call ahead for take away orders.</p>
+        </div>
+        <iframe class="map" title="Map of Bún Chả, 332 Highett Rd, Highett" loading="lazy"
+          src="https://www.google.com/maps?q=332+Highett+Rd,+Highett+VIC+3190&output=embed"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="brand">Bún Chả</p>
+    <p><span data-address></span> · <a data-phone-link href="#"><span data-phone></span></a></p>
+    <p class="muted">© <span id="year"></span> Bún Chả Highett</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
