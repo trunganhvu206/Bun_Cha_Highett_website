@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Bookings · Bún Chả staff</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="admin.css" />
+  <link rel="icon" href="/images/logo.svg" type="image/svg+xml" />
+</head>
+<body>
+  <header class="nav admin-top">
+    <a href="/" class="brand" aria-label="Bún Chả website"><img class="logo" src="/images/logo.svg" alt="" width="40" height="40" /></a>
+    <span class="nav-title">Staff · Bookings</span>
+  </header>
+
+  <div class="admin-shell">
+    <!-- MENU -->
+    <nav class="admin-menu" aria-label="Staff menu">
+      <a href="#calendar" data-view="calendar"><span class="mi mi-cal" aria-hidden="true"></span>Calendar</a>
+      <a href="#day" data-view="day"><span class="mi mi-day" aria-hidden="true"></span>Day bookings</a>
+      <a href="#requests" data-view="requests"><span class="mi mi-req" aria-hidden="true"></span>Requests <span class="menu-badge" id="pending-count" hidden></span></a>
+      <a href="#reports" data-view="reports"><span class="mi mi-rep" aria-hidden="true"></span>Reports</a>
+      <a href="#settings" data-view="settings"><span class="mi mi-set" aria-hidden="true"></span>Settings</a>
+    </nav>
+
+    <main class="admin-main">
+      <!-- CALENDAR -->
+      <section class="view" id="view-calendar" aria-labelledby="cal-title">
+        <div class="cal-head">
+          <button type="button" class="day-btn" id="cal-prev" aria-label="Previous month">‹</button>
+          <h1 id="cal-title"></h1>
+          <button type="button" class="day-btn" id="cal-next" aria-label="Next month">›</button>
+          <button type="button" class="day-btn" id="cal-today">This month</button>
+        </div>
+        <div class="cal-grid cal-weekdays" aria-hidden="true">
+          <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+        </div>
+        <div class="cal-grid" id="cal-days"></div>
+        <p class="cal-legend muted">
+          <span><i class="lg lg-guests"></i>confirmed guests</span>
+          <span><i class="lg lg-pending"></i>waiting for approval</span>
+          <span><i class="lg lg-full"></i>times marked full</span>
+          <span><i class="lg lg-closed"></i>closed</span>
+        </p>
+      </section>
+
+      <!-- DAY -->
+      <section class="view" id="view-day" aria-labelledby="day-title" hidden>
+        <div class="day-bar">
+          <button type="button" class="day-btn" id="prev-day" aria-label="Previous day">‹</button>
+          <input type="date" id="day" aria-label="Date" />
+          <button type="button" class="day-btn" id="next-day" aria-label="Next day">›</button>
+          <button type="button" class="day-btn day-today" id="today">Today</button>
+        </div>
+        <h1 id="day-title"></h1>
+        <p id="summary" class="summary"></p>
+
+        <div class="day-split">
+          <div class="day-bookings">
+            <h2 class="panel-title">Bookings</h2>
+            <ul class="bk-list" id="rows"></ul>
+          </div>
+
+          <aside class="day-side">
+            <div class="panel" id="add-booking">
+              <h2 class="panel-title">Add a booking</h2>
+              <p class="muted">For phone and walk-in bookings – confirmed straight away.</p>
+              <form id="add-form" class="book-form">
+                <div class="field-row">
+                  <label class="field">Time <select name="time" required></select></label>
+                  <label class="field">Guests <input type="number" name="guests" min="1" max="100" value="2" required /></label>
+                </div>
+                <label class="field">Name <input name="name" maxlength="80" required /></label>
+                <label class="field">Phone <input type="tel" name="phone" maxlength="20" required /></label>
+                <label class="field">Notes <span class="optional">(optional)</span> <input name="notes" maxlength="500" /></label>
+                <p id="add-error" class="form-error" role="alert" hidden></p>
+                <button class="btn" type="submit">Add booking</button>
+              </form>
+            </div>
+
+            <div class="panel" id="times-panel">
+              <h2 class="panel-title">Online booking times</h2>
+              <p class="muted">Mark a time <strong>Full</strong> to stop customers requesting it online. Staff can still add bookings.</p>
+              <label class="day-close">
+                <input type="checkbox" id="day-blocked" />
+                Stop all online bookings for this day
+              </label>
+              <ul class="time-list" id="time-list"></ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- REQUESTS -->
+      <section class="view" id="view-requests" aria-labelledby="pending-title" hidden>
+        <h1 id="pending-title">Waiting for approval</h1>
+        <p class="muted">Confirm or decline each online request. The customer is emailed / texted automatically.</p>
+        <ul class="bk-list" id="pending-list"></ul>
+      </section>
+
+      <!-- REPORTS -->
+      <section class="view" id="view-reports" aria-labelledby="rep-title" hidden>
+        <div class="cal-head">
+          <button type="button" class="day-btn" id="rep-prev" aria-label="Previous year">‹</button>
+          <h1 id="rep-title"></h1>
+          <button type="button" class="day-btn" id="rep-next" aria-label="Next year">›</button>
+        </div>
+
+        <div class="tiles" id="year-tiles"></div>
+
+        <div class="chart-card">
+          <h2 class="chart-title">Guests per month</h2>
+          <p class="chart-sub muted">Confirmed bookings. Tap a month to see it in detail below.</p>
+          <div class="colchart" id="chart-months"></div>
+          <details class="chart-table"><summary>Show as table</summary><div id="table-months"></div></details>
+        </div>
+
+        <h2 class="rep-month-title" id="rep-month-title"></h2>
+        <div class="tiles" id="month-tiles"></div>
+
+        <div class="chart-card">
+          <h2 class="chart-title">Guests per day</h2>
+          <p class="chart-sub muted" id="days-sub"></p>
+          <div class="colchart colchart-days" id="chart-days"></div>
+          <details class="chart-table"><summary>Show as table</summary><div id="table-days"></div></details>
+        </div>
+
+        <div class="chart-pair">
+          <div class="chart-card">
+            <h2 class="chart-title">Busiest days of the week</h2>
+            <p class="chart-sub muted">Guests, this month</p>
+            <div class="barchart" id="chart-weekdays"></div>
+          </div>
+          <div class="chart-card">
+            <h2 class="chart-title">Most booked times</h2>
+            <p class="chart-sub muted">Guests, this month</p>
+            <div class="barchart" id="chart-times"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section class="view" id="view-settings" aria-labelledby="set-title" hidden>
+        <h1 id="set-title">Settings</h1>
+        <p class="muted">Changes apply to the website, online bookings and the AI assistant straight away.</p>
+
+        <form id="settings-form" class="settings" novalidate>
+          <div class="panel">
+            <h2 class="panel-title">Opening hours</h2>
+            <table class="hours-edit">
+              <thead><tr><th scope="col">Day</th><th scope="col">Open</th><th scope="col">From</th><th scope="col">To</th></tr></thead>
+              <tbody id="hours-rows"></tbody>
+            </table>
+          </div>
+
+          <div class="panel">
+            <h2 class="panel-title">Closed days</h2>
+            <p class="muted">Public holidays, staff holidays or private events. Online bookings are turned off on these days.</p>
+            <div class="closed-add">
+              <label class="field">From <input type="date" id="closed-from" /></label>
+              <label class="field">To <span class="optional">(leave empty for one day)</span> <input type="date" id="closed-to" /></label>
+              <button type="button" class="btn btn-sm" id="closed-add">Add closed days</button>
+            </div>
+            <p id="closed-error" class="form-error" role="alert" hidden></p>
+            <ul class="closed-list" id="closed-list"></ul>
+          </div>
+
+          <div class="panel">
+            <h2 class="panel-title">Online bookings</h2>
+            <div class="rules">
+              <label class="field">Guests per time slot <input type="number" name="maxGuestsPerSlot" min="1" /><span class="help">Most guests that can start at the same time.</span></label>
+              <label class="field">Largest online group <input type="number" name="maxPartySize" min="1" /><span class="help">Bigger groups are asked to call.</span></label>
+              <label class="field">Time between slots
+                <select name="slotMinutes"><option value="15">15 minutes</option><option value="30">30 minutes</option><option value="60">1 hour</option></select>
+              </label>
+              <label class="field">Last booking (minutes before closing) <input type="number" name="lastBookingBeforeClose" min="0" /><span class="help">30 = last booking 8:30pm when you close at 9pm.</span></label>
+              <label class="field">Book up to (days ahead) <input type="number" name="daysAhead" min="1" /></label>
+              <label class="field">Same-day notice (minutes) <input type="number" name="minNoticeMinutes" min="0" /><span class="help">60 = customers can't book within the next hour.</span></label>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h2 class="panel-title">Contact details</h2>
+            <div class="rules">
+              <label class="field">Phone <input type="tel" name="phone" /></label>
+              <label class="field">Email <input type="email" name="email" /></label>
+            </div>
+          </div>
+
+          <p id="settings-error" class="form-error" role="alert" hidden></p>
+          <div class="settings-save">
+            <button class="btn" type="submit">Save settings</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" hidden></div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
