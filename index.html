@@ -14,7 +14,7 @@
     :root {
       /* One red family + light neutrals */
       --red: #b80e17;
-      --weave-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='28' viewBox='0 0 56 28'%3E%3Cg fill='%23fbf6ee' opacity='.85'%3E%3Crect x='3' y='6' width='22' height='4'/%3E%3Crect x='3' y='12' width='22' height='4'/%3E%3Crect x='3' y='18' width='22' height='4'/%3E%3Crect x='34' y='3' width='4' height='22'/%3E%3Crect x='40' y='3' width='4' height='22'/%3E%3Crect x='46' y='3' width='4' height='22'/%3E%3C/g%3E%3C/svg%3E");   /* basketweave strip (kẻ thẳng đan): framing the seasonal band */
+      --wave-gold: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='28' viewBox='0 0 32 28'%3E%3Cg fill='none' stroke='%23e0a526' stroke-width='2'%3E%3Cg transform='translate(-32 28)'%3E%3Ccircle r='24' fill='%23b80e17'/%3E%3Ccircle r='22.5'/%3E%3Ccircle r='18'/%3E%3Ccircle r='13'/%3E%3Ccircle r='8'/%3E%3Ccircle r='3.5' fill='%23e0a526' stroke='none'/%3E%3C/g%3E%3Cg transform='translate(0 28)'%3E%3Ccircle r='24' fill='%23b80e17'/%3E%3Ccircle r='22.5'/%3E%3Ccircle r='18'/%3E%3Ccircle r='13'/%3E%3Ccircle r='8'/%3E%3Ccircle r='3.5' fill='%23e0a526' stroke='none'/%3E%3C/g%3E%3Cg transform='translate(32 28)'%3E%3Ccircle r='24' fill='%23b80e17'/%3E%3Ccircle r='22.5'/%3E%3Ccircle r='18'/%3E%3Ccircle r='13'/%3E%3Ccircle r='8'/%3E%3Ccircle r='3.5' fill='%23e0a526' stroke='none'/%3E%3C/g%3E%3Cg transform='translate(64 28)'%3E%3Ccircle r='24' fill='%23b80e17'/%3E%3Ccircle r='22.5'/%3E%3Ccircle r='18'/%3E%3Ccircle r='13'/%3E%3Ccircle r='8'/%3E%3Ccircle r='3.5' fill='%23e0a526' stroke='none'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");   /* gold wave arches (sóng vòm), framing the seasonal band */
       --red-dark: #8f0b12;
       --maroon: #5e0a0e;
       --nav-bg: var(--red);   /* nav: same red as the intro */
@@ -246,8 +246,8 @@
 
     /* ---------- SEASONAL: red band ---------- */
     .seasonal { text-align: center; padding-top: 0; padding-bottom: 0; }
-    .seasonal::before, .seasonal::after { content: ""; display: block; height: 28px; background: var(--weave-light) repeat-x center / 56px 28px; margin-inline: calc(-1 * var(--gutter)); }
-    .seasonal::before { margin-bottom: clamp(48px, 6vw, 80px); }
+    .seasonal::before, .seasonal::after { content: ""; display: block; height: 28px; background: var(--wave-gold) repeat-x center bottom / 32px 28px; margin-inline: calc(-1 * var(--gutter)); }
+    .seasonal::before { transform: scaleY(-1); margin-bottom: clamp(48px, 6vw, 80px); }
     .seasonal::after { margin-top: clamp(48px, 6vw, 80px); }
     .seasonal-note { max-width: 32rem; margin: 14px auto 0; opacity: 0.92; }
     .seasonal-list { list-style: none; margin: clamp(36px, 4vw, 56px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2.5vw, 32px); text-align: left; }
