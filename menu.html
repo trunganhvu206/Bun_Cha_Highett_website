@@ -13,6 +13,7 @@
   <style>
     :root {
       --red: #b80e17;
+      --weave-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='28' viewBox='0 0 56 28'%3E%3Cg fill='%23fbf6ee' opacity='.85'%3E%3Crect x='3' y='6' width='22' height='4'/%3E%3Crect x='3' y='12' width='22' height='4'/%3E%3Crect x='3' y='18' width='22' height='4'/%3E%3Crect x='34' y='3' width='4' height='22'/%3E%3Crect x='40' y='3' width='4' height='22'/%3E%3Crect x='46' y='3' width='4' height='22'/%3E%3C/g%3E%3C/svg%3E");   /* basketweave strip (kẻ thẳng đan): framing the seasonal band */
       --red-dark: #8f0b12;
       --maroon: #5e0a0e;
       --cream: #fbf6ee;
@@ -98,7 +99,10 @@
     .menu-page { padding: clamp(36px, 5vw, 64px) var(--gutter) clamp(64px, 8vw, 104px); }
 
     /* ---------- Seasonal panel ---------- */
-    .seasonal { border-radius: var(--radius); padding: clamp(28px, 4vw, 48px) clamp(20px, 4vw, 48px); overflow: hidden; margin-bottom: clamp(40px, 5vw, 64px); }
+    .seasonal { border-radius: var(--radius); padding: 0 clamp(20px, 4vw, 48px); overflow: hidden; margin-bottom: clamp(40px, 5vw, 64px); }
+    .seasonal::before, .seasonal::after { content: ""; display: block; height: 28px; background: var(--weave-light) repeat-x center / 56px 28px; margin-inline: calc(-1 * clamp(20px, 4vw, 48px)); }
+    .seasonal::before { margin-bottom: clamp(24px, 3vw, 36px); }
+    .seasonal::after { margin-top: clamp(24px, 3vw, 36px); }
     .seasonal-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 8px 24px; margin-bottom: 22px; }
     .seasonal-head .display { color: var(--on-red); }
     .seasonal-head p { opacity: 0.92; max-width: 26rem; }
