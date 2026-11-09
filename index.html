@@ -97,6 +97,8 @@
 
     /* ---------- HERO: red ---------- */
     .hero { padding-top: clamp(28px, 5vh, 72px); padding-bottom: 0; text-align: center; overflow: hidden; position: relative; }
+    /* The intro fills the first screen below the logo bar at every screen size; the photo grows to take up the spare room */
+    .hero { display: flex; flex-direction: column; min-height: calc(100svh - var(--nav-live, 68px)); }
     /* Sized by width and by screen height, so the photo still shows on a short laptop screen */
     .hero h1 { font: 600 clamp(3rem, min(9vw, 11vh), 7.5rem)/1.05 var(--serif); text-transform: uppercase; letter-spacing: 0.02em; }
     .hero h1 em { font-style: italic; font-weight: 500; text-transform: none; }
@@ -109,7 +111,7 @@
     /* The photo box is full-bleed; the clip starts at the content edges and opens out to fill the red band */
     .hero-photo {
       position: relative; margin: clamp(28px, 5vh, 64px) calc(50% - 50vw) 0; overflow: hidden;
-      aspect-ratio: 16 / 7; min-height: 320px; max-height: 680px;
+      flex: 1 0 auto; min-height: clamp(320px, 43.75vw, 680px); /* about 16:7 of the screen width, then grows to fill */
       clip-path: inset(0 var(--inset, var(--gutter)) 0 var(--inset, var(--gutter)) round var(--round, var(--radius)) var(--round, var(--radius)) 0 0);
     }
     .hero-zoom { position: absolute; inset: 0; }
@@ -391,9 +393,7 @@
       .tile.t1 .ph, .tile.t2 .ph { aspect-ratio: 1; }
       .tile .name { font-size: 1.15rem; }
       .brand span { font-size: 1.1rem; }
-      /* Phones: the intro fills the first screen (below the logo bar); the photo grows to take up the spare room */
-      .hero { display: flex; flex-direction: column; min-height: calc(100svh - var(--nav-live, 68px)); }
-      .hero-photo { aspect-ratio: auto; flex: 1 0 auto; min-height: 75vw; }
+      .hero-photo { min-height: 75vw; } /* 4:3 on phones */
       .hero-actions .btn { width: 100%; }
       .lanterns { right: 16px; }
       .sig-grid { gap: 24px 14px; }
