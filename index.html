@@ -48,7 +48,8 @@
 
     /* ---------- Colour bands ---------- */
     .band { padding: clamp(64px, 8vw, 112px) var(--gutter); }
-    .band-red { background: var(--red); color: var(--on-red); }
+    /* red-pattern.svg: Đông Sơn bronze drum pattern in tones of --red */
+    .band-red { background: var(--red) url("images/red-pattern.svg") center / cover no-repeat; color: var(--on-red); }
     .band-cream { background: var(--cream); }
     .band-white { background: var(--white); }
 
@@ -140,7 +141,7 @@
       position: absolute; inset: 12%; border-radius: 50%; overflow: hidden;
       box-shadow: 0 28px 60px -18px rgba(94, 10, 14, 0.45), 0 0 0 10px var(--cream), 0 0 0 11px color-mix(in srgb, var(--red) 30%, transparent);
     }
-    /* bun-cha-plate.jpg is the plate cut from bun-cha-hanoi.jpg (x 142-358, y 54-270), upscaled 4x and sharpened */
+    /* bun-cha-plate.jpg is the plate cut from the 1536px bún chả photo (x 436-1100, y 166-829), resized to 864px */
     .plate img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     @media (prefers-reduced-motion: no-preference) {
       .plate { transition: transform 1.2s var(--ease); }
