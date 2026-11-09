@@ -46,7 +46,7 @@
     .skip-link:focus { top: 12px; }
 
     /* ---------- Shared pieces (same as the home page) ---------- */
-    .band-red { color: var(--on-red); }
+    .band-red { background: var(--red); color: var(--on-red); }
     .display { font: 600 clamp(2rem, 4.2vw, 3.2rem)/1.02 var(--serif); text-transform: uppercase; letter-spacing: 0.01em; color: var(--red); }
     .btn {
       display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 26px;
@@ -64,7 +64,7 @@
     .link:hover { text-decoration: underline; }
 
     /* ---------- Nav ---------- */
-    .nav { position: sticky; top: 0; z-index: var(--z-sticky); color: var(--on-red); display: flex; align-items: center; gap: 24px; padding: 12px var(--gutter); min-height: var(--nav-h); }
+    .nav { position: sticky; top: 0; z-index: var(--z-sticky); background: var(--red); color: var(--on-red); display: flex; align-items: center; gap: 24px; padding: 12px var(--gutter); min-height: var(--nav-h); }
     .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
     .brand-logo { display: block; width: 44px; height: 44px; outline: 1.5px solid var(--cream); outline-offset: 2px; }
     .brand span { font: 600 1.35rem var(--serif); text-transform: uppercase; letter-spacing: 0.04em; }
@@ -147,7 +147,7 @@
     .legend p + p { font-size: 0.9rem; }
 
     /* ---------- Footer: deep maroon ---------- */
-    .footer { color: var(--on-red); padding: clamp(40px, 6vw, 64px) var(--gutter) 28px; }
+    .footer { background: var(--maroon); color: var(--on-red); padding: clamp(40px, 6vw, 64px) var(--gutter) 28px; }
     .footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px; }
     .footer-name { font: 600 1.6rem var(--serif); text-transform: uppercase; letter-spacing: 0.04em; }
     .footer-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px 32px; margin-top: 32px; }
@@ -171,7 +171,7 @@
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .nav-toggle { display: inline-flex; margin-left: auto; }
       #site-nav { display: none; }
-      #site-nav.open { display: flex; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; padding: 4px var(--gutter) 16px; border-top: 1px solid color-mix(in srgb, var(--cream) 30%, transparent); }
+      #site-nav.open { display: flex; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; background: var(--red); padding: 4px var(--gutter) 16px; border-top: 1px solid color-mix(in srgb, var(--cream) 30%, transparent); }
       #site-nav.open .nav-links { flex-direction: column; gap: 0; margin: 0; width: 100%; }
       #site-nav.open a { display: block; width: 100%; }
       #site-nav.open a { border: 0; border-radius: 0; padding: 14px 0; min-height: 0; font-size: 1.05rem; border-bottom: 1px solid color-mix(in srgb, var(--cream) 18%, transparent); background: none; color: var(--on-red); }
@@ -197,14 +197,6 @@
       html { scroll-behavior: auto; }
       *, *::before, *::after { transition-duration: 0.01ms !important; animation: none !important; }
     }
-  
-    /* Shared red background (red-pattern.svg, Đông Sơn bronze drum) for the logo bar, red sections and footer. It is pinned to
-       the screen (fixed) and fills it, so the bar, the intro and the footer all show one continuous picture. */
-    .nav, .band-red, .footer, #site-nav.open {
-      background: var(--red) url("images/red-pattern.svg") center / cover no-repeat fixed;
-    }
-    /* Seasonal cards: the same red as the band, see-through enough to blur the drum behind, with a shadow to lift them */
-    .seasonal-list li { background: color-mix(in srgb, var(--red) 82%, transparent); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); border-color: color-mix(in srgb, var(--cream) 45%, transparent); box-shadow: 0 10px 28px rgb(40 0 0 / 0.35); }
   </style>
 </head>
 <body>
