@@ -391,7 +391,9 @@
       .tile.t1 .ph, .tile.t2 .ph { aspect-ratio: 1; }
       .tile .name { font-size: 1.15rem; }
       .brand span { font-size: 1.1rem; }
-      .hero-photo { aspect-ratio: 4 / 3; min-height: 0; }
+      /* Phones: the intro fills the first screen (below the logo bar); the photo grows to take up the spare room */
+      .hero { display: flex; flex-direction: column; min-height: calc(100svh - var(--nav-live, 68px)); }
+      .hero-photo { aspect-ratio: auto; flex: 1 0 auto; min-height: 75vw; }
       .hero-actions .btn { width: 100%; }
       .lanterns { right: 16px; }
       .sig-grid { gap: 24px 14px; }
@@ -783,6 +785,11 @@
       }).observe(heroBtn);
       new IntersectionObserver(([e]) => { atBook = e.isIntersecting; sync(); }, { threshold: 0.2 }).observe(bookSection);
     })();
+
+    // ---- Logo bar height, so the intro can fill exactly the rest of the first screen on phones ----
+    const navBar = document.querySelector(".nav");
+    const setNavLive = () => document.documentElement.style.setProperty("--nav-live", `${navBar.offsetHeight}px`);
+    setNavLive(); addEventListener("resize", setNavLive);
 
     // ---- Hero photo: zooms out and widens as you scroll ----
     if (!reducedMotion) {
