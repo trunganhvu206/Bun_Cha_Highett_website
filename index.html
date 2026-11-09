@@ -415,13 +415,13 @@
       *, *::before, *::after { transition-duration: 0.01ms !important; animation: none !important; }
     }
   
-    /* Shared red background (red-pattern.jpg) for the logo bar, red sections and footer. It is pinned to
+    /* Shared red background (red-pattern.svg, Đông Sơn bronze drum) for the logo bar, red sections and footer. It is pinned to
        the screen (fixed) and fills it, so the bar, the intro and the footer all show one continuous picture. */
     .nav, .band-red, .footer, #site-nav.open {
-      background: var(--red) url("images/red-pattern.jpg") center / cover no-repeat fixed;
+      background: var(--red) url("images/red-pattern.svg") center / cover no-repeat fixed;
     }
-    /* Seasonal cards: a solid deep-red card with a shadow so each one stands off the pattern */
-    .seasonal-list li { background: var(--maroon); border-color: color-mix(in srgb, var(--cream) 35%, transparent); box-shadow: 0 10px 28px rgb(40 0 0 / 0.35); }
+    /* Seasonal cards: the same red as the band, see-through enough to blur the drum behind, with a shadow to lift them */
+    .seasonal-list li { background: color-mix(in srgb, var(--red) 82%, transparent); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); border-color: color-mix(in srgb, var(--cream) 45%, transparent); box-shadow: 0 10px 28px rgb(40 0 0 / 0.35); }
   </style>
 </head>
 <body>
