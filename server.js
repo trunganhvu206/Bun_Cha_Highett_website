@@ -8,7 +8,6 @@ const vm = require("node:vm");
 const crypto = require("node:crypto");
 const { DatabaseSync } = require("node:sqlite");
 const notify = require("./notify");
-const chat = require("./chat");
 
 const PORT = Number(process.env.PORT) || 3000;
 const PUBLIC_DIR = path.join(__dirname, "public");
@@ -325,9 +324,8 @@ function bookingStats(year, month) {
   };
 }
 
-// Simple per-IP limits to stop spam: successful online bookings, and assistant questions.
+// Simple per-IP limits to stop spam: successful online bookings.
 const recentBookingsByIp = new Map();
-const recentChatsByIp = new Map();
 function recentHits(map, ip, windowMs) {
   const cutoff = Date.now() - windowMs;
   const hits = (map.get(ip) || []).filter((t) => t > cutoff);
@@ -462,23 +460,6 @@ async function handle(req, res) {
       ref: b.ref, date: b.date, time: b.time, guests: b.guests, name: b.name,
       contact: [b.email && notify.emailEnabled && "email", notify.smsEnabled && "sms"].filter(Boolean),
     });
-  }
-
-  if (p === "/api/chat" && req.method === "POST") {
-    const hits = recentHits(recentChatsByIp, clientIp(req), 10 * 60 * 1000);
-    if (hits.length >= 30) throw new HttpError(429, "You've asked a lot of questions – please call us for more help.");
-    const { messages } = await readJson(req);
-    const valid = Array.isArray(messages) && messages.length > 0 && messages.length <= 20 &&
-      messages.every((m, i) => m && (m.role === (i % 2 ? "assistant" : "user")) && typeof m.content === "string" && m.content.trim() && m.content.length <= 1500) &&
-      messages.length % 2 === 1;
-    if (!valid) throw new HttpError(400, "Invalid request.");
-    hits.push(Date.now());
-    try {
-      return sendJson(res, 200, { reply: await chat.answer(messages, siteData()) });
-    } catch (err) {
-      if (err instanceof chat.ChatError) throw new HttpError(err.status, err.message);
-      throw err;
-    }
   }
 
   if (p === "/api/reviews" && req.method === "GET") {

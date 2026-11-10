@@ -4,126 +4,365 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Menu · Bún Chả · Vietnamese Grill House · Highett</title>
-  <meta name="description" content="The full menu of Bún Chả, Highett – bún chả, rice paper rolls, pho, mains, rice dishes and weekend bánh mì. Dine in or take away." />
+  <meta name="description" content="The full menu of Bún Chả, Highett: bún chả, rice paper rolls, phở, mains, rice dishes and weekend bánh mì. Dine in or take away." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet" />
   <link rel="icon" href="images/logo.svg" type="image/svg+xml" />
+  <style>
+    :root {
+      --red: #b80e17;
+      --wave-gold: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='28' viewBox='0 0 32 28'%3E%3Cg fill='none' stroke='%23e0a526' stroke-width='2'%3E%3Cg transform='translate(-32 28)'%3E%3Ccircle r='24' fill='%23b80e17'/%3E%3Ccircle r='22.5'/%3E%3Ccircle r='18'/%3E%3Ccircle r='13'/%3E%3Ccircle r='8'/%3E%3Ccircle r='3.5' fill='%23e0a526' stroke='none'/%3E%3C/g%3E%3Cg transform='translate(0 28)'%3E%3Ccircle r='24' fill='%23b80e17'/%3E%3Ccircle r='22.5'/%3E%3Ccircle r='18'/%3E%3Ccircle r='13'/%3E%3Ccircle r='8'/%3E%3Ccircle r='3.5' fill='%23e0a526' stroke='none'/%3E%3C/g%3E%3Cg transform='translate(32 28)'%3E%3Ccircle r='24' fill='%23b80e17'/%3E%3Ccircle r='22.5'/%3E%3Ccircle r='18'/%3E%3Ccircle r='13'/%3E%3Ccircle r='8'/%3E%3Ccircle r='3.5' fill='%23e0a526' stroke='none'/%3E%3C/g%3E%3Cg transform='translate(64 28)'%3E%3Ccircle r='24' fill='%23b80e17'/%3E%3Ccircle r='22.5'/%3E%3Ccircle r='18'/%3E%3Ccircle r='13'/%3E%3Ccircle r='8'/%3E%3Ccircle r='3.5' fill='%23e0a526' stroke='none'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");   /* gold wave arches (sóng vòm), framing the seasonal band */
+      --red-dark: #8f0b12;
+      --maroon: #5e0a0e;
+      --cream: #fbf6ee;
+      --cream-2: #f1e9dc;
+      --white: #ffffff;
+      --ink: #2a2622;
+      --muted: #665e55;
+      --on-red: #fbf6ee;
+      --gold: #e0a526;
+      --serif: "Fraunces", Georgia, serif;
+      --sans: "Be Vietnam Pro", system-ui, sans-serif;
+      --max: 1200px;
+      --gutter: max(16px, calc((100% - var(--max)) / 2));
+      --radius: 18px;
+      --nav-h: 68px;
+      --ease: cubic-bezier(0.25, 1, 0.5, 1);
+      --z-sticky: 10; --z-catnav: 9; --z-bar: 20; --z-skip: 40;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 72px); }
+    body { margin: 0; background: var(--cream); color: var(--ink); font: 400 17px/1.65 var(--sans); overflow-x: clip; }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.05; margin: 0; text-wrap: balance; }
+    p { margin: 0; text-wrap: pretty; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+    .band-red :focus-visible, .nav :focus-visible, .footer :focus-visible { outline-color: var(--cream); }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .muted { color: var(--muted); }
+    .skip-link { position: absolute; left: 16px; top: -100px; z-index: var(--z-skip); background: var(--ink); color: #fff; padding: 10px 18px; font-weight: 600; text-decoration: none; }
+    .skip-link:focus { top: 12px; }
+
+    /* ---------- Shared pieces (same as the home page) ---------- */
+    .band-red { background: var(--red); color: var(--on-red); }
+    .display { font: 600 clamp(2rem, 4.2vw, 3.2rem)/1.02 var(--serif); text-transform: uppercase; letter-spacing: 0.01em; color: var(--red); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 26px;
+      border-radius: 999px; border: 1.5px solid var(--red); background: var(--red); color: var(--on-red);
+      font: 600 0.95rem var(--sans); text-transform: uppercase; letter-spacing: 0.06em; text-decoration: none; cursor: pointer;
+      transition: background-color 0.25s var(--ease), color 0.25s var(--ease), transform 0.2s var(--ease);
+    }
+    .btn:hover { background: var(--red-dark); border-color: var(--red-dark); }
+    .btn:active { transform: scale(0.98); }
+    .band-red .btn { background: var(--cream); color: var(--red); border-color: var(--cream); }
+    .band-red .btn:hover { background: transparent; color: var(--cream); }
+    .text-link { font: 600 0.95rem var(--sans); text-transform: uppercase; letter-spacing: 0.06em; text-decoration: none; background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1.5px no-repeat; padding-bottom: 3px; transition: background-size 0.3s var(--ease); }
+    .text-link:hover { background-size: 0 1.5px; background-position: 100% 100%; }
+    .link { color: var(--red); font-weight: 600; text-decoration: none; }
+    .link:hover { text-decoration: underline; }
+
+    /* ---------- Nav ---------- */
+    .nav { position: sticky; top: 0; z-index: var(--z-sticky); background: var(--red); color: var(--on-red); display: flex; align-items: center; gap: 24px; padding: 12px var(--gutter); min-height: var(--nav-h); }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-logo { display: block; width: 44px; height: 44px; outline: 1.5px solid var(--cream); outline-offset: 2px; }
+    .brand span { font: 600 1.35rem var(--serif); text-transform: uppercase; letter-spacing: 0.04em; }
+    .nav-links { display: flex; gap: 10px; margin-left: auto; }
+    .nav-links a, .nav-toggle {
+      display: inline-flex; align-items: center; min-height: 34px; padding: 0 18px; border-radius: 999px;
+      border: 1.2px solid color-mix(in srgb, var(--cream) 75%, transparent); color: var(--on-red); text-decoration: none; font-size: 0.9rem;
+      transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
+    }
+    .nav-links a:hover, .nav-links a[aria-current="page"] { background: var(--cream); color: var(--red); }
+    .nav-links a.solid { background: var(--cream); color: var(--red); font-weight: 600; }
+    .nav-links a.solid:hover { background: transparent; color: var(--cream); }
+    .nav-toggle { display: none; background: transparent; font: 500 0.9rem var(--sans); cursor: pointer; }
+    #site-nav { display: contents; }
+
+    /* ---------- Hero: red band ---------- */
+    .hero { text-align: center; padding: clamp(40px, 6vh, 72px) var(--gutter) clamp(48px, 7vh, 80px); }
+    .hero h1 { font: 600 clamp(2.8rem, min(8vw, 11vh), 6rem)/1.02 var(--serif); text-transform: uppercase; letter-spacing: 0.02em; }
+    .hero-lede { max-width: 36rem; margin: 16px auto 0; font-size: 1.08rem; opacity: 0.95; }
+    .hero-actions { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 14px 26px; margin-top: 26px; }
+    .hero-actions .text-link { color: var(--on-red); }
+
+    /* ---------- Section links: sticky pills under the nav ---------- */
+    .cat-nav { position: sticky; top: var(--nav-h); z-index: var(--z-catnav); background: color-mix(in srgb, var(--cream) 94%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--cream-2); padding: 0 var(--gutter); }
+    .cat-nav ul { list-style: none; margin: 0; padding: 12px 0; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+    .cat-nav ul::-webkit-scrollbar { display: none; }
+    .cat-nav a { display: block; white-space: nowrap; padding: 7px 16px; border-radius: 999px; border: 1.2px solid var(--red); color: var(--red); font-weight: 600; font-size: 0.88rem; text-decoration: none; transition: background-color 0.2s var(--ease), color 0.2s var(--ease); }
+    .cat-nav a:hover, .cat-nav a.is-here { background: var(--red); color: var(--on-red); }
+    .cat-nav a.cat-nav-sig { background: var(--red); color: var(--on-red); }
+
+    .menu-page { padding: clamp(36px, 5vw, 64px) var(--gutter) clamp(64px, 8vw, 104px); }
+
+    /* ---------- Seasonal panel ---------- */
+    .seasonal { border-radius: var(--radius); padding: 0 clamp(20px, 4vw, 48px); overflow: hidden; margin-bottom: clamp(40px, 5vw, 64px); }
+    .seasonal::before, .seasonal::after { content: ""; display: block; height: 28px; background: var(--wave-gold) repeat-x center bottom / 32px 28px; margin-inline: calc(-1 * clamp(20px, 4vw, 48px)); }
+    .seasonal::before { transform: scaleY(-1); margin-bottom: clamp(24px, 3vw, 36px); }
+    .seasonal::after { margin-top: clamp(24px, 3vw, 36px); }
+    .seasonal-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 8px 24px; margin-bottom: 22px; }
+    .seasonal-head .display { color: var(--on-red); }
+    .seasonal-head p { opacity: 0.92; max-width: 26rem; }
+    .seasonal-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 2vw, 24px); }
+    .seasonal-list li { border: 1.5px solid var(--gold); border-radius: 14px; padding: 18px 20px; display: grid; gap: 6px; align-content: start; }
+    .seasonal-list .num { font: italic 500 0.92rem var(--serif); color: var(--gold); }
+    .seasonal-list h3 { font-size: 1.45rem; text-transform: uppercase; }
+    .seasonal-list p { font-size: 0.94rem; opacity: 0.9; }
+
+    /* ---------- Filters and info ---------- */
+    .menu-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 24px; margin-bottom: 14px; }
+    .menu-filters { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .filter-label { font-weight: 600; font-size: 0.92rem; margin-right: 4px; }
+    .chip { font: 600 0.88rem var(--sans); cursor: pointer; color: var(--red); background: transparent; padding: 0 16px; min-height: 40px; border-radius: 999px; border: 1.5px solid var(--red); transition: background-color 0.2s var(--ease), color 0.2s var(--ease); }
+    .chip:hover { background: color-mix(in srgb, var(--red) 8%, transparent); }
+    .chip[aria-pressed="true"] { background: var(--red); color: var(--on-red); }
+    .chip[aria-pressed="true"]::before { content: "✓ "; }
+    .filter-note { margin: 0 0 12px; font-size: 0.92rem; }
+    .menu-info { margin: 10px 0 clamp(32px, 4vw, 48px); padding: 16px 22px; background: var(--white); border: 1.2px solid var(--cream-2); border-radius: 14px; font-size: 0.94rem; display: grid; gap: 4px; }
+
+    /* ---------- Menu sections ---------- */
+    .menu-cat { margin-bottom: clamp(40px, 5vw, 64px); scroll-margin-top: calc(var(--nav-h) + 72px); }
+    .menu-cat-head { display: flex; align-items: center; gap: 18px; margin-bottom: 8px; }
+    .menu-cat-head h2 { font: 600 clamp(1.8rem, 3.6vw, 2.6rem)/1.05 var(--serif); text-transform: uppercase; color: var(--red); flex: none; max-width: 70%; }
+    .menu-cat-head::after { content: ""; flex: 1; height: 1.5px; background: var(--red); order: 2; }
+    .mo-badge { order: 3; flex: none; font: 600 0.75rem var(--sans); text-transform: uppercase; letter-spacing: 0.06em; padding: 4px 12px; border-radius: 999px; background: var(--red); color: var(--on-red); }
+    .menu-note { color: var(--muted); font: italic 500 1.02rem var(--serif); margin: 6px 0 4px; max-width: 60ch; }
+    .menu-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; column-gap: clamp(32px, 5vw, 64px); }
+    .menu-item { padding: 18px 0; border-bottom: 1px dashed color-mix(in srgb, var(--red) 28%, transparent); }
+    .menu-item-head { display: flex; align-items: baseline; gap: 8px; }
+    .menu-name { font: 500 1.18rem/1.3 var(--serif); color: var(--ink); }
+    .menu-dots { flex: 1; min-width: 12px; border-bottom: 1.5px dotted color-mix(in srgb, var(--red) 40%, transparent); transform: translateY(-4px); }
+    .menu-price { flex: none; white-space: nowrap; font-weight: 600; color: var(--red); font-variant-numeric: tabular-nums; }
+    .menu-desc { margin: 4px 0 0; color: var(--muted); font-size: 0.93rem; }
+    .menu-options { list-style: none; margin: 4px 0 0; padding: 0; font-size: 0.88rem; color: var(--red-dark); }
+    .menu-options li::before { content: "+ "; font-weight: 600; }
+    .menu-extra { margin: 6px 0 0; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; font-size: 0.85rem; }
+    .menu-ta { font-weight: 600; }
+    .menu-ta-note { color: var(--muted); }
+    .menu-tag { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 2px 9px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--ink) 25%, transparent); color: var(--muted); }
+    .diet { display: inline-block; text-decoration: none; cursor: help; font: 600 0.66rem var(--sans); letter-spacing: 0.04em; padding: 1px 6px; margin-left: 6px; vertical-align: 3px; border: 1px solid var(--red); color: var(--red); border-radius: 999px; }
+    .badge-new { display: inline-block; font: 700 0.66rem var(--sans); text-transform: uppercase; letter-spacing: 0.06em; padding: 2px 8px; margin-left: 6px; vertical-align: 3px; background: var(--red); color: var(--on-red); border-radius: 999px; }
+    .legend { margin-top: 16px; padding-top: 24px; border-top: 1.5px solid var(--red); }
+    .legend p:first-child { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 0 0 10px; font-size: 0.92rem; }
+    .legend .diet { margin: 0 4px 0 0; }
+    .legend p + p { font-size: 0.9rem; }
+
+    /* ---------- Footer: deep maroon ---------- */
+    .footer { background: var(--maroon); color: var(--on-red); padding: clamp(40px, 6vw, 64px) var(--gutter) 28px; }
+    .footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px; }
+    .footer-name { font: 600 1.6rem var(--serif); text-transform: uppercase; letter-spacing: 0.04em; }
+    .footer-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px 32px; margin-top: 32px; }
+    .footer h3 { font: italic 500 1.05rem var(--serif); margin-bottom: 8px; opacity: 0.85; }
+    .footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+    .footer a { text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+    .footer p, .footer li { overflow-wrap: anywhere; }
+    .socials { display: flex; gap: 10px; flex-wrap: wrap; }
+    .socials a { display: inline-flex; align-items: center; min-height: 36px; padding: 0 16px; border-radius: 999px; background: var(--cream); color: var(--maroon); font-weight: 600; font-size: 0.88rem; }
+    .socials a:hover { text-decoration: none; background: var(--cream-2); }
+    .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 32px; padding-top: 18px; border-top: 1px solid color-mix(in srgb, var(--cream) 40%, transparent); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .footer-bottom em { font: italic 500 0.95rem var(--serif); text-transform: none; letter-spacing: 0; }
+
+    .actionbar { display: none; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 960px) {
+      .menu-list { grid-template-columns: 1fr; }
+      .seasonal-list { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .nav-toggle { display: inline-flex; margin-left: auto; }
+      #site-nav { display: none; }
+      #site-nav.open { display: flex; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; background: var(--red); padding: 4px var(--gutter) 16px; border-top: 1px solid color-mix(in srgb, var(--cream) 30%, transparent); }
+      #site-nav.open .nav-links { flex-direction: column; gap: 0; margin: 0; width: 100%; }
+      #site-nav.open a { display: block; width: 100%; }
+      #site-nav.open a { border: 0; border-radius: 0; padding: 14px 0; min-height: 0; font-size: 1.05rem; border-bottom: 1px solid color-mix(in srgb, var(--cream) 18%, transparent); background: none; color: var(--on-red); }
+    }
+    @media (max-width: 640px) {
+      :root { --nav-h: 64px; }
+      .brand span { font-size: 1.1rem; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; min-height: 54px; }
+      .menu-cat-head h2 { max-width: 80%; }
+      .menu-tools { flex-direction: column; align-items: stretch; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .actionbar {
+        display: block; position: fixed; inset: auto 0 0 0; z-index: var(--z-bar);
+        padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: var(--cream); border-top: 1px solid var(--cream-2);
+        transform: translateY(110%); visibility: hidden; transition: transform 0.45s var(--ease), visibility 0s linear 0.45s;
+      }
+      .actionbar.is-shown { transform: none; visibility: visible; transition: transform 0.45s var(--ease), visibility 0s; }
+      .actionbar .btn { width: 100%; min-height: 54px; }
+      body { padding-bottom: 78px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation: none !important; }
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="nav">
-    <a href="index.html" class="brand" aria-label="Bún Chả – home"><img class="logo" src="images/logo.svg" alt="" width="44" height="44" /></a>
-    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
-      <span class="nav-toggle-icon" aria-hidden="true"></span>Menu
-    </button>
+    <a class="brand" href="index.html" aria-label="Bún Chả, home">
+      <svg class="brand-logo" viewBox="0 0 100 100" width="44" height="44" aria-hidden="true">
+        <rect width="100" height="100" fill="var(--red)" />
+        <g fill="none" stroke="#fff" stroke-linecap="square" stroke-linejoin="miter">
+          <rect x="7" y="7" width="86" height="86" stroke-width="2.5" />
+          <g stroke-width="5">
+            <path d="M20 22 V48 H37 V35 H20 M20 22 H34 V35" />
+            <path d="M43 26 V48 H57 V26" /><path d="M50 18 L54 12" />
+            <path d="M64 48 V26 H80 V48" />
+            <path d="M37 58 H20 V82 H37" />
+            <path d="M43 58 V82 M57 58 V82 M43 70 H57" />
+            <path d="M64 82 V58 H80 V82 M64 70 H80" />
+          </g>
+        </g>
+      </svg><span lang="vi">Bún Chả</span>
+    </a>
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav id="site-nav" aria-label="Main">
-      <a href="index.html#about">About</a>
-      <a href="menu.html" aria-current="page">Food menu</a>
-      <a href="index.html#reviews">Reviews</a>
-      <a href="index.html#book">Bookings</a>
-      <a href="index.html#visit">Hours &amp; Location</a>
-      <a data-phone-link href="#">Call us</a>
+      <div class="nav-links">
+        <a href="index.html#about">Our story</a>
+        <a href="index.html#signature">Signature</a>
+        <a href="menu.html" aria-current="page">Menu</a>
+        <a href="index.html#reviews">Reviews</a>
+        <a class="solid" href="index.html#book">Book a table</a>
+      </div>
     </nav>
-    <a class="btn btn-sm nav-book" href="index.html#book">Book a table</a>
   </header>
 
   <main id="main" tabindex="-1">
-    <section class="page-hero">
-      <div class="page-hero-inner">
-        <p class="eyebrow" lang="vi">Thực đơn</p>
-        <h1>Our Menu</h1>
-        <p class="lede">Dine in or take away. Charcoal grilled, fresh and full of flavour.</p>
-        <div class="hero-cta">
-          <a class="btn" href="index.html#book">Book a table</a>
-          <a class="btn btn-ghost" target="_blank" rel="noopener" data-ubereats href="#">Order on Uber Eats</a>
-          <a class="btn btn-ghost" data-phone-link href="#">Call to order <span data-phone></span></a>
-        </div>
+    <!-- HERO · red -->
+    <section class="hero band-red" aria-labelledby="page-title">
+      <h1 id="page-title">Our menu</h1>
+      <p class="hero-lede">Charcoal grilled, fresh and full of flavour. Dine in, or take away by phone or Uber Eats.</p>
+      <div class="hero-actions">
+        <a class="btn" id="hero-book" href="index.html#book">Book a table</a>
+        <a class="text-link" target="_blank" rel="noopener" data-ubereats href="#">Order on Uber Eats</a>
+        <a class="text-link" data-phone-link href="#">Call to order</a>
       </div>
     </section>
 
-    <!-- Jump to a type of food -->
+    <!-- Jump to a type of food (filled by menu.js) -->
     <nav class="cat-nav" aria-label="Menu sections">
       <ul id="cat-nav"></ul>
     </nav>
 
-    <section class="section full-menu" aria-label="Full menu">
-      <div class="menu-tools">
-        <div class="menu-filters" role="group" aria-labelledby="filter-label">
-          <span id="filter-label" class="filter-label">Show only:</span>
-          <button type="button" class="chip" data-filter="gf" aria-pressed="false">Gluten free</button>
-          <button type="button" class="chip" data-filter="vegan" aria-pressed="false">Vegan</button>
-          <button type="button" class="chip" data-filter="nutfree" aria-pressed="false">No nuts</button>
+    <div class="menu-page">
+      <section aria-label="Full menu">
+        <div class="menu-tools">
+          <div class="menu-filters" role="group" aria-labelledby="filter-label">
+            <span id="filter-label" class="filter-label">Show only:</span>
+            <button type="button" class="chip" data-filter="gf" aria-pressed="false">Gluten free</button>
+            <button type="button" class="chip" data-filter="vegan" aria-pressed="false">Vegan</button>
+            <button type="button" class="chip" data-filter="nutfree" aria-pressed="false">No nuts</button>
+          </div>
         </div>
-      </div>
-      <p id="filter-note" class="filter-note muted" hidden></p>
-      <p id="menu-count" class="sr-only" aria-live="polite"></p>
+        <p id="filter-note" class="filter-note muted" hidden></p>
+        <p id="menu-count" class="sr-only" aria-live="polite"></p>
 
-      <div class="menu-info">
-        <p id="price-info"></p>
-        <p id="takeaway-info"></p>
-      </div>
+        <div class="menu-info">
+          <p id="price-info"></p>
+          <p id="takeaway-info"></p>
+        </div>
 
-      <div id="menu-body" class="menu-cats"></div>
-      <p id="menu-empty" class="muted" hidden>No dishes match your choices. Try removing a filter, or ask our staff – many dishes can be adjusted.</p>
+        <!-- Seasonal: after the filters and price notes, before the dishes -->
+        <section class="seasonal band-red" id="seasonal" aria-labelledby="seasonal-title">
+          <div class="seasonal-head">
+            <h2 class="display" id="seasonal-title">Seasonal menu</h2>
+            <p>Cooked for the cooler months, for a limited time. Ask us what's on today.</p>
+          </div>
+          <ul class="seasonal-list" id="seasonal-list"></ul>
+        </section>
 
-      <div class="legend">
-        <p>
-          <span><abbr class="diet">GF</abbr> Gluten free</span>
-          <span><abbr class="diet">GFO</abbr> Gluten free option</span>
-          <span><abbr class="diet">V</abbr> Vegan</span>
-          <span><abbr class="diet">VGO</abbr> Vegan option</span>
-          <span><abbr class="diet">N</abbr> Contains nuts</span>
-        </p>
-        <p class="muted">Please advise staff of allergies or intolerances upon ordering. We cannot guarantee that cross-contamination has not occurred.</p>
-      </div>
-    </section>
+        <div id="menu-body" class="menu-cats"></div>
+        <p id="menu-empty" class="muted" hidden>No dishes match your choices. Try removing a filter, or ask our staff: many dishes can be adjusted.</p>
+
+        <div class="legend">
+          <p>
+            <span><abbr class="diet">GF</abbr> Gluten free</span>
+            <span><abbr class="diet">GFO</abbr> Gluten free option</span>
+            <span><abbr class="diet">V</abbr> Vegan</span>
+            <span><abbr class="diet">VGO</abbr> Vegan option</span>
+            <span><abbr class="diet">N</abbr> Contains nuts</span>
+          </p>
+          <p class="muted">Please tell our staff about allergies or intolerances when you order. We cannot guarantee that cross-contamination has not occurred.</p>
+        </div>
+      </section>
+    </div>
   </main>
 
+  <!-- FOOTER · deep maroon -->
   <footer class="footer">
-    <img class="footer-logo" src="images/logo.svg" alt="Bún Chả" width="72" height="72" />
-    <p><span data-address></span></p>
-    <p><a data-phone-link href="#"><span data-phone></span></a> · <a data-email-link href="#"><span data-email></span></a></p>
-    <p><a target="_blank" rel="noopener" data-instagram href="#"></a> · <a target="_blank" rel="noopener" data-facebook href="#"></a></p>
-    <p class="muted">© <span data-year></span> Bún Chả Asian Fusion · Highett</p>
+    <div class="footer-top">
+      <p class="footer-name" lang="vi">Bún Chả</p>
+      <div class="socials">
+        <a target="_blank" rel="noopener" data-instagram href="#"></a>
+        <a target="_blank" rel="noopener" data-facebook href="#"></a>
+      </div>
+    </div>
+    <div class="footer-grid">
+      <div><h3>Visit</h3><p><a data-maps-link target="_blank" rel="noopener" href="#"><span data-address></span></a></p></div>
+      <div><h3>Contact</h3><p><a data-phone-link href="#"><span data-phone></span></a><br><a data-email-link href="#"><span data-email></span></a></p></div>
+      <div><h3>Order</h3><ul><li><a href="menu.html">Full menu</a></li><li><a data-ubereats target="_blank" rel="noopener" href="#">Uber Eats</a></li><li><a href="index.html#book">Book a table</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year></span> Bún Chả Asian Fusion · Highett</span>
+      <em>Thank you, see you again</em>
+    </div>
   </footer>
 
-  <!-- AI ASSISTANT -->
-  <div class="chat" id="chat">
-    <button type="button" class="chat-launcher" id="chat-launcher" aria-expanded="false" aria-controls="chat-panel">
-      <span class="chat-launcher-icon" aria-hidden="true"></span>
-      <span>Ask us</span>
-    </button>
-    <div class="chat-panel" id="chat-panel" role="dialog" aria-labelledby="chat-title" hidden>
-      <div class="chat-head">
-        <img src="images/logo.svg" alt="" width="32" height="32" />
-        <div>
-          <p class="chat-title" id="chat-title">Bún Chả assistant</p>
-          <p class="chat-sub">AI assistant · can make mistakes</p>
-        </div>
-        <button type="button" class="chat-close" id="chat-close" aria-label="Close chat">×</button>
-      </div>
-      <div class="chat-log" id="chat-log" role="log" aria-live="polite">
-        <div class="chat-msg chat-bot">Xin chào! Hi! Ask me anything about our dishes, ingredients or dietary options.</div>
-      </div>
-      <div class="chat-suggest" id="chat-suggest">
-        <button type="button">What's gluten free?</button>
-        <button type="button">What do you recommend?</button>
-        <button type="button">Is bánh mì on today?</button>
-      </div>
-      <form class="chat-form" id="chat-form">
-        <label for="chat-input" class="sr-only">Your question</label>
-        <input id="chat-input" name="q" autocomplete="off" maxlength="1000" placeholder="Type your question…" required />
-        <button type="submit" class="chat-send" aria-label="Send">➤</button>
-      </form>
-    </div>
-  </div>
+  <nav class="actionbar" aria-label="Quick booking"><a class="btn" href="index.html#book">Book a table</a></nav>
 
   <script src="data.js"></script>
   <script src="common.js"></script>
   <script src="menu.js"></script>
-  <script src="chat-widget.js"></script>
+  <script>
+    // Seasonal dishes (same list as the home page)
+    const SEASONAL = [
+      { name: "Canh Chua Ca", desc: "Sweet and sour fish soup: a southern tamarind broth with fish, pineapple, tomato and fresh herbs." },
+      { name: "Bun Bo Hue", desc: "Spicy beef noodle soup from Huế: lemongrass and chilli broth with beef and thick round rice noodles." },
+      { name: "Grilled Chicken Pho", desc: "Our phở broth, topped with chicken grilled over charcoal." },
+    ];
+    document.getElementById("seasonal-list").innerHTML = SEASONAL.map((d, i) =>
+      `<li><span class="num">No. ${i + 1}</span><h3>${esc(d.name)}</h3><p>${esc(d.desc)}</p></li>`).join("");
+
+    // Relabel the Signature link, and add the seasonal panel to the section links.
+    const catNav = document.getElementById("cat-nav");
+    const sig = catNav.querySelector(".cat-nav-sig");
+    if (sig) { sig.href = "index.html#signature"; sig.textContent = "★ Signature"; }
+    catNav.querySelector("li").insertAdjacentHTML("afterend", `<li><a href="#seasonal">Seasonal</a></li>`);
+
+    // Highlight the section you are reading in the sticky section links
+    if ("IntersectionObserver" in window) {
+      const links = new Map([...catNav.querySelectorAll('a[href^="#"]')].map((a) => [a.getAttribute("href").slice(1), a]));
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          links.forEach((a) => a.classList.remove("is-here"));
+          const a = links.get(e.target.id);
+          if (a) {
+            a.classList.add("is-here");
+            catNav.scrollTo({ left: a.offsetLeft - catNav.clientWidth / 2 + a.offsetWidth / 2, behavior: reducedMotion ? "auto" : "smooth" });
+          }
+        });
+      }, { rootMargin: "-40% 0px -55% 0px" });
+      const observeAll = () => { io.disconnect(); links.forEach((_, id) => { const el = document.getElementById(id); if (el) io.observe(el); }); };
+      observeAll();
+      // menu.js redraws the sections when a filter changes
+      document.querySelectorAll(".menu-filters [data-filter]").forEach((c) => c.addEventListener("click", () => setTimeout(observeAll)));
+    }
+
+    // Phone "Book a table" bar: appears only after the hero's button has scrolled away
+    (() => {
+      const bar = document.querySelector(".actionbar");
+      const heroBtn = document.getElementById("hero-book");
+      if (!("IntersectionObserver" in window)) return bar.classList.add("is-shown");
+      new IntersectionObserver(([e]) => bar.classList.toggle("is-shown", !e.isIntersecting && e.boundingClientRect.top < 0)).observe(heroBtn);
+    })();
+  </script>
 </body>
 </html>

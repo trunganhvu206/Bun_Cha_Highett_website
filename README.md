@@ -1,6 +1,6 @@
 # Bún Chả Highett website
 
-Website, table booking requests and an AI assistant for Bún Chả, 332 Highett Rd, Highett VIC 3190.
+Website and table booking requests for Bún Chả, 332 Highett Rd, Highett VIC 3190.
 
 ## Run it
 
@@ -37,7 +37,6 @@ Everything is optional – each feature switches on when its settings are presen
 | `GMAIL_USER` / `RESTAURANT_EMAIL` | Change the sending / notification address (default bunchahighett@gmail.com) |
 | `SITE_URL` | The live website address, used in the staff email link (e.g. https://buncha-highett.com.au) |
 | `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_FROM` | Turns on text messages to Australian mobiles ([Twilio](https://www.twilio.com), paid per SMS) |
-| `ANTHROPIC_API_KEY` | Turns on the "Ask us" AI assistant (from [console.anthropic.com](https://console.anthropic.com), paid per use). Without it the assistant politely says it's unavailable |
 | `GOOGLE_PLACES_API_KEY` | Shows the live Google rating and latest reviews (Google Cloud → Places API (New)). Without it, the site shows what's in `REVIEWS` in `public/data.js` |
 | `DB_PATH` | Where the booking database is kept (default `bookings.db`) |
 | `TRUST_PROXY=1` | Set when running behind a hosting provider's proxy |
@@ -46,7 +45,7 @@ Everything is optional – each feature switches on when its settings are presen
 
 Most things are in [public/data.js](public/data.js): address, phone, email, socials, Uber Eats link, opening
 hours, booking rules (time slots, guests per slot, largest group, closed dates like Christmas), the three menus
-and the fallback Google reviews. The AI assistant reads the same file, so it always knows the current menu and hours.
+and the fallback Google reviews.
 
 Page text (About us, signature dishes) is in [public/index.html](public/index.html). Photos are in `public/images/`.
 
@@ -60,9 +59,8 @@ The colours (red & black, matching the logo) are set at the top of [public/style
 |---|---|
 | `public/` | The website |
 | `admin/` | Staff bookings page (password protected) |
-| `server.js` | Serves the site, stores bookings, reviews and assistant endpoints |
+| `server.js` | Serves the site, stores bookings and serves reviews |
 | `notify.js` | Booking emails and text messages |
-| `chat.js` | The AI assistant |
 | `bookings.db` | Booking database, created on first run – **back this up**, never commit it |
 
 ## Hosting

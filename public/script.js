@@ -32,79 +32,26 @@ function renderOpenStatus() {
   const mins = now.getHours() * 60 + now.getMinutes();
   const slots = RESTAURANT.hours[now.getDay()] || [];
   const current = slots.find(([a, b]) => mins >= toMinutes(a) && mins < toMinutes(b));
-  const el = document.getElementById("open-status");
-  if (current) {
-    el.innerHTML = `<span class="dot open"></span>Open now · until ${fmtTime(current[1])}`;
-    return;
-  }
   const later = slots.find(([a]) => toMinutes(a) > mins);
-  el.innerHTML = later
-    ? `<span class="dot"></span>Closed now · opens ${fmtTime(later[0])} today`
-    : `<span class="dot"></span>Closed now`;
+  const text = current ? `Open now · until ${fmtTime(current[1])}`
+    : later ? `Closed now · opens ${fmtTime(later[0])} today` : "Closed now";
+  document.getElementById("open-status").innerHTML = `<span class="dot${current ? " open" : ""}"></span>${text}`;
+  // Same line in the Hours & Location panel
+  const v = document.getElementById("visit-open");
+  v.textContent = current ? `Open now until ${fmtTime(current[1])}` : later ? `Opens today at ${fmtTime(later[0])}` : "Closed now";
+  v.classList.toggle("is-open", !!current);
 }
 
-// ---- Hero slideshow ----
+// ---- Hero slideshow: changes photo by itself every 6 seconds ----
 const slides = [...document.querySelectorAll(".hero-slide")];
-const dotsEl = document.getElementById("hero-dots");
-const pauseBtn = document.getElementById("hero-pause");
 let slideIndex = 0;
-let slideTimer = null;
-
-dotsEl.innerHTML = slides.map((_, i) =>
-  `<button type="button" class="hero-dot" aria-label="Show photo ${i + 1} of ${slides.length}"></button>`
-).join("");
-const dots = [...dotsEl.children];
-
-function showSlide(i) {
-  slideIndex = (i + slides.length) % slides.length;
+setInterval(() => {
+  if (document.hidden) return;
+  slideIndex = (slideIndex + 1) % slides.length;
   slides.forEach((s, n) => s.classList.toggle("is-active", n === slideIndex));
-  dots.forEach((d, n) => d.setAttribute("aria-current", n === slideIndex ? "true" : "false"));
-}
+}, 6000);
 
-function setPlaying(play) {
-  clearInterval(slideTimer);
-  slideTimer = play ? setInterval(() => showSlide(slideIndex + 1), 6000) : null;
-  pauseBtn.classList.toggle("is-paused", !play);
-  pauseBtn.setAttribute("aria-label", play ? "Pause slideshow" : "Play slideshow");
-}
-
-dots.forEach((d, i) => d.addEventListener("click", () => { showSlide(i); setPlaying(false); }));
-pauseBtn.addEventListener("click", () => setPlaying(!slideTimer));
-showSlide(0);
-setPlaying(!reducedMotion); // never auto-play for people who've asked for less motion
-
-// ---- Signature dishes: tap a photo to read its story ----
-const dishDialog = document.getElementById("dish-dialog");
-
-document.querySelectorAll(".sig-tile").forEach((tile) => {
-  tile.addEventListener("click", () => {
-    const t = document.getElementById("dish-" + tile.dataset.dish);
-    document.getElementById("dish-img").src = t.dataset.img;
-    document.getElementById("dish-img").alt = t.dataset.alt;
-    document.getElementById("dish-title").textContent = t.dataset.title;
-    document.getElementById("dish-sub").textContent = t.dataset.sub;
-    document.getElementById("dish-text").replaceChildren(t.content.cloneNode(true));
-    dishDialog.showModal();
-    dishDialog.scrollTop = 0;
-  });
-});
-document.getElementById("dish-close").addEventListener("click", () => dishDialog.close());
-// Clicking the dark backdrop outside the box closes it too
-dishDialog.addEventListener("click", (e) => { if (e.target === dishDialog) dishDialog.close(); });
-
-// ---- Menu overview: one card per type of food, each linking to that part of the full menu ----
-function renderMenuOverview() {
-  document.getElementById("menu-overview").innerHTML = MENU.map((cat) => {
-    const dishes = cat.items.filter((i) => !/^Add /.test(i.name)); // leave out add-ons like "Add a fried egg"
-    const from = Math.min(...dishes.map((i) => (i.taOnly ? i.ta : i.price)));
-    const examples = dishes.slice(0, 3).map((i) => esc(i.name)).join(" · ") + (dishes.length > 3 ? " …" : "");
-    return `<li><a class="mo-card" href="menu.html#${cat.id}">
-      <span class="mo-head"><span class="mo-title">${esc(cat.title)}</span>${cat.badge ? `<span class="mo-badge">${esc(cat.badge)}</span>` : ""}</span>
-      <span class="mo-items">${examples}</span>
-      <span class="mo-foot"><span>${dishes.length} ${dishes.length === 1 ? "dish" : "dishes"}</span><span>from ${fmtPrice(from)}</span></span>
-    </a></li>`;
-  }).join("");
-}
+// The Bún Chả Signature slideshow lives in signature.js
 
 // ---- Google reviews ----
 // Five stars, filled to `value` out of 5 (e.g. 4.6 fills 92%).
@@ -126,24 +73,21 @@ function renderReviews(data) {
     ? items.map((r, i) => `
       <li class="rv-card" aria-roledescription="slide" aria-label="Review ${i + 1} of ${items.length}">
         <figure>
-          <div class="rv-text">
-            <span class="rv-quote" aria-hidden="true">“</span>
-            <blockquote>${esc(r.text)}</blockquote>
-            <figcaption>
+          <div class="rv-head">
+            <span class="rv-avatar" aria-hidden="true">${esc((r.name || "?").trim().charAt(0).toUpperCase())}</span>
+            <div class="rv-who">
               <strong>${r.authorUrl ? `<a href="${esc(r.authorUrl)}" target="_blank" rel="noopener">${esc(r.name)}</a>` : esc(r.name)}</strong>
-              <span class="rv-meta">${stars(r.stars)} Google review${r.when ? ` · ${esc(r.when)}` : ""}</span>
-            </figcaption>
+              <span class="rv-meta">${r.when ? esc(r.when) : "Google review"}</span>
+            </div>
+            <span class="rv-g" aria-hidden="true">G</span>
           </div>
-          <img class="rv-img" src="${REVIEW_PHOTOS[i % REVIEW_PHOTOS.length]}" alt="" loading="lazy" />
+          ${stars(r.stars)}
+          <blockquote>${esc(r.text)}</blockquote>
         </figure>
       </li>`).join("")
     : `<li class="rv-empty muted">See what our guests are saying about us on Google – and tell us about your visit!</li>`;
   updateReviewNav();
 }
-
-// Food photos shown beside each review card
-const REVIEW_PHOTOS = ["images/bun-cha-hanoi.jpg", "images/gallery-feast.jpg", "images/gallery-rice-paper-rolls.jpg",
-  "images/gallery-skewers.jpg", "images/gallery-cha-ca.jpg", "images/gallery-vermicelli-beef.jpg"];
 
 // ‹ › buttons slide one card at a time; swiping and scrolling work too
 const rvTrack = document.getElementById("review-list");
@@ -220,4 +164,3 @@ fetch("/api/reviews")
 
 renderHours();
 renderOpenStatus();
-renderMenuOverview();

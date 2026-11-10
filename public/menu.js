@@ -76,7 +76,7 @@ document.querySelectorAll(".menu-filters [data-filter]").forEach((chip) => {
 });
 
 // Jump links to each type of food
-document.getElementById("cat-nav").innerHTML = MENU.map((cat) =>
+document.getElementById("cat-nav").innerHTML = `<li><a class="cat-nav-sig" href="index.html#signature">★ Bún Chả Signature</a></li>` + MENU.map((cat) =>
   `<li><a href="#${cat.id}">${esc(cat.title)}</a></li>`).join("");
 
 document.getElementById("price-info").textContent = MENU_INFO.prices;
